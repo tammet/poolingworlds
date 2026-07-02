@@ -128,28 +128,28 @@ def plot(cv_B, cv_A, outdir):
         ax.set_facecolor(surface)
         ax.axvline(0.5, color=grid_c, lw=0.8, zorder=0)
         ax.grid(axis="y", color=grid_c, lw=0.6, zorder=0)
-        ax.plot(grid, cv["oracle"], color=ink, lw=2.4, ls=(0, (4, 2)), alpha=0.55,
+        ax.plot(grid, cv["oracle"], color=ink, lw=2.6, ls=(0, (4, 2)), alpha=0.55,
                 label="oracle (floor)", zorder=2)
         for name in RULES:
-            ax.plot(grid, cv[name], color=series[name], lw=1.6,
+            ax.plot(grid, cv[name], color=series[name], lw=1.9,
                     dashes=dashes[name] or (None, None),
                     label=FULL[name], zorder=3)
-        ax.set_title(title, fontsize=10, color=ink)
+        ax.set_title(title, fontsize=11, color=ink)
         ax.set_xlabel("precaution price c  (share of the preventable loss)",
-                      fontsize=9, color=ink2)
+                      fontsize=10, color=ink2)
         ax.set_xlim(0, 1)
         ax.set_ylim(bottom=0)
-        ax.tick_params(colors=muted, labelsize=8)
+        ax.tick_params(colors=muted, labelsize=9)
         for side in ("top", "right"):
             ax.spines[side].set_visible(False)
         for side in ("left", "bottom"):
             ax.spines[side].set_color(axis_c)
     axes[0].set_ylabel("avoidable expense per round\n(lower is better)",
-                       fontsize=9, color=ink2)
+                       fontsize=10, color=ink2)
 
     # direct labels in clear zones (positions hand-placed per panel)
     def mark(ax, text, x, y, color, ha="center"):
-        ax.text(x, y, text, fontsize=7.5, color=color, ha=ha)
+        ax.text(x, y, text, fontsize=8.5, color=color, ha=ha)
     mark(axes[0], "noisy-or", 0.74, 0.222, series["noisyor"])
     mark(axes[0], "upco, mycin", 0.16, 0.100, series["upco"], ha="right")
     mark(axes[0], "average (= oracle)", 0.42, 0.128, series["avg"])
@@ -157,7 +157,7 @@ def plot(cv_B, cv_A, outdir):
     mark(axes[1], "average", 0.65, 0.106, series["avg"])
     mark(axes[1], "upco (= oracle)", 0.50, 0.077, series["upco"])
 
-    axes[1].legend(loc="upper right", fontsize=8, frameon=False,
+    axes[1].legend(loc="upper right", fontsize=9, frameon=False,
                    labelcolor=ink2, handlelength=2.2)
     fig.tight_layout()
     for d in outdir:

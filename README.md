@@ -27,9 +27,12 @@ python3 run_all.py
 ```
 
 runs all 14 sections in about a minute. Requirements: Python 3 only — except section 14
-(the Murphy diagram figure), which needs `numpy` and `matplotlib` and is skipped with a
-notice if they are missing. Every script is also runnable on its own
-(`python3 corr_upco_bayes.py`) and importable (each has a `main()`).
+(the Murphy diagram figure), which needs `numpy` and `matplotlib`
+(`pip install -r requirements.txt`) and is skipped with a notice if they are missing. Every
+script is also runnable on its own (`python3 corr_upco_bayes.py`) and importable (each has a
+`main()`). A separate script, `make_paper_figures.py` (same requirements), regenerates the
+five illustration figures of the accompanying paper: the rule-comparison curves, the
+calibration curves, the wealth trajectories and the extremizing-exponent sweep.
 
 **What to expect.** Each section prints a short story, the Monte-Carlo frequencies next to
 the formula values (`match` / `best=...` lines), and for the betting sections a ranking of
