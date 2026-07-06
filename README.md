@@ -26,7 +26,7 @@ script prints the claim it makes together with the simulated check of that claim
 python3 run_all.py
 ```
 
-runs all 14 sections in about a minute. Requirements: Python 3 only — except section 14
+runs all 15 sections in about two minutes. Requirements: Python 3 only — except section 14
 (the Murphy diagram figure), which needs `numpy` and `matplotlib`
 (`pip install -r requirements.txt`) and is skipped with a notice if they are missing. Every
 script is also runnable on its own (`python3 corr_upco_bayes.py`) and importable (each has a
@@ -240,6 +240,16 @@ What the experiments show:
   some world (even pignistic, the world-9 winner, has negative mean growth), and mixworld is
   the only informative rule with positive growth in all three. Knowing the world is worth
   ≈0.04 (A) / ≈0.06 (B) bits per round over mixworld.
+- `decide_kelly_world_identification.py` keeps the world fixed but lets the bettor learn it:
+  she starts from the uniform prior over the candidate worlds, bets the posterior-weighted
+  mixture of the world formulas (her first bet is mixworld), and updates the posterior with
+  each outcome. Her wealth is exactly the average of the K single-world bettors' wealths, so
+  on every sequence she ends at most log2(K) bits behind the oracle who knew the world from
+  round one — a one-time identification fee in place of mixworld's per-round gap. Measured:
+  the shortfall converges to exactly log2(K) — 2.585 bits in group A, 1.585 in group B, the
+  information content of "which world is this" — half of it is paid within the first ≈43 (A)
+  / ≈19 (B) rounds, and at the 100k-round horizon the growth-rate cost is ≤ 0.00003 bits per
+  round.
 
 ## Extending the suite
 
@@ -266,7 +276,7 @@ concrete observers rather than abstract notation.
   comparison reporting.
 - `corr_*.py` — one correspondence scenario each (table above).
 - `decide_*.py` — the decision-value experiments (Kelly betting, betting worlds, cost-loss,
-  Murphy diagram, unknown-world lotteries).
+  Murphy diagram, unknown-world lotteries, world identification).
 - `run_all.py` — runs everything.
 
 ## License

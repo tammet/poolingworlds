@@ -16,6 +16,7 @@ import decide_kelly_scenarios
 import corr_dempster_shafer
 import decide_extremized_weighted_logodds
 import decide_kelly_unknown_world
+import decide_kelly_world_identification
 try:
     import decide_murphy_diagram          # needs numpy + matplotlib; everything else is pure Python
 except ImportError:
@@ -58,3 +59,5 @@ if __name__ == "__main__":
         print("skipped: needs numpy and matplotlib (pip install numpy matplotlib)")
     else:
         decide_murphy_diagram.main()
+    sep("15. identifying the world by betting: a one-time fee of log2(K) bits")
+    decide_kelly_world_identification.main()
